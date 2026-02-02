@@ -32,10 +32,10 @@
 
                 <div style="margin: 30px 0;">
                     <label style="display: block; margin-bottom: 12px; text-transform: uppercase; font-size: 0.8rem; color: #00e5ff; letter-spacing: 1px;">Color de la pieza:</label>
-                    <select id="selectorColor" onchange="cambiarVista()" style="width: 100%; padding: 15px; border-radius: 12px; background: #0a1128; color: white; border: 1px solid #00e5ff; font-size: 1rem; cursor: pointer; outline: none;">
-                        <option value="Blanco">Blanco</option>
-                        <option value="Negro Mate">Negro Mate</option>
-                    </select>
+                   <select id="selectorColor" onchange="ejecutarCambioMagico()" style="width: 100%; padding: 15px; border-radius: 12px; background: #0a1128; color: white; border: 1px solid #00e5ff; font-size: 1rem; cursor: pointer;">
+    <option value="Blanco">Blanco</option>
+    <option value="Negro Mate">Negro Mate</option>
+</select>
                 </div>
 
                 <a id="btnWhatsapp" href="#" target="_blank"
@@ -82,51 +82,45 @@
     function ejecutarCambioMagico() {
         const selector = document.getElementById('selectorColor');
         const imagen = document.getElementById('fotoProducto');
-        const boton = document.getElementById('btnWhatsapp');
-        const miTelefono = "5493816XXXXXX"; // <--- CAMBIÁ ESTO
+        const miTelefono = "5493816XXXXXX"; 
 
-        if (!imagen) return;
+        if (!selector || !imagen) return;
+
+        // Feedback visual: El botón parpadea para avisarte que el código arrancó
+        document.getElementById('btnWhatsapp').style.background = "white";
+        setTimeout(() => { 
+            document.getElementById('btnWhatsapp').style.background = "#00e5ff"; 
+        }, 200);
 
         const colorElegido = selector.value;
         clearTimeout(relojNydra);
 
-        // Definimos nombres exactos
         let foto1 = (colorElegido === "Blanco") ? "blanco-vacia.png" : "negro-vacia.png";
         let foto2 = (colorElegido === "Blanco") ? "blanco-planta.jpeg" : "negro-planta.png";
 
-        // TRUCO PARA FORZAR EL LINK: Agregamos un número aleatorio al final (?v=...)
-        // Esto obliga al celular a bajar la foto de nuevo y no usar la vieja
-        const cacheBuster = "?v=" + Math.random();
+        // Forzamos al navegador a ignorar la memoria vieja
+        const version = "?v=" + new Date().getTime();
 
-        // PASO 1: Cambiar a VACÍA inmediatamente
-        imagen.style.opacity = "0.1"; // Casi invisible para notar el cambio
-        setTimeout(() => {
-            imagen.src = foto1 + cacheBuster;
-            imagen.style.opacity = "1";
-        }, 200);
+        // PASO 1: Cambiar a VACÍA
+        imagen.src = foto1 + version;
+        console.log("Cambiando a: " + foto1);
 
         // PASO 2: Cambiar a PLANTA a los 3 segundos
         relojNydra = setTimeout(() => {
-            imagen.style.opacity = "0.1";
-            setTimeout(() => {
-                imagen.src = foto2 + cacheBuster;
-                imagen.style.opacity = "1";
-            }, 200);
+            imagen.src = foto2 + version;
+            console.log("Cambiando a: " + foto2);
         }, 3000);
 
         // Actualizar WhatsApp
         const texto = encodeURIComponent("Hola Nydra Studios! Consulto por la maceta " + colorElegido);
-        boton.href = "https://wa.me/" + miTelefono + "?text=" + texto;
+        document.getElementById('btnWhatsapp').href = "https://wa.me/" + miTelefono + "?text=" + texto;
     }
 
-    // Vinculamos la función al evento de cambio manualmente para asegurar que el celular lo detecte
-    document.addEventListener('DOMContentLoaded', function() {
-        const elSelector = document.getElementById('selectorColor');
-        elSelector.addEventListener('change', ejecutarCambioMagico);
-        ejecutarCambioMagico(); // Carga inicial
-    });
+    // Iniciar apenas cargue
+    window.onload = ejecutarCambioMagico;
 </script>
 </body>
 </html>
+
 
 

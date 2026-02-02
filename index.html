@@ -17,34 +17,30 @@
     </header>
 
     <section style="padding: 20px; max-width: 1000px; margin: auto;">
-        <div style="background: #16213e; border-radius: 24px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(0,229,255,0.15);">
-            
-            <div style="flex: 1; min-width: 320px; background: #070d1f; display: flex; align-items: center; justify-content: center; min-height: 400px; position: relative;">
-                <img id="fotoProducto" src="blanco-vacia.png" alt="Maceta Nydra" 
-                     style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease;">
-            </div>
-
-            <div style="flex: 1; min-width: 320px; padding: 40px; box-sizing: border-box;">
-                <h2 style="color: #00e5ff; margin-top: 0; font-size: 2.2rem; font-weight: 700;">Maceta Prismática</h2>
-                <p style="color: #b2bec3; line-height: 1.6; font-size: 1.1rem;">
-                    Diseño geométrico de vanguardia. Fabricada mediante impresión 3D con terminación mate premium y alta resistencia.
-                </p>
-
-                <div style="margin: 30px 0;">
-                    <label style="display: block; margin-bottom: 12px; text-transform: uppercase; font-size: 0.8rem; color: #00e5ff; letter-spacing: 1px;">Color de la pieza:</label>
-                   <select id="selectorColor" onchange="ejecutarCambioMagico()" style="width: 100%; padding: 15px; border-radius: 12px; background: #0a1128; color: white; border: 1px solid #00e5ff; font-size: 1rem; cursor: pointer;">
-    <option value="Blanco">Blanco</option>
-    <option value="Negro Mate">Negro Mate</option>
-</select>
-                </div>
-
-                <a id="btnWhatsapp" href="#" target="_blank"
-                   style="display: block; text-align: center; background: #00e5ff; color: #0a1128; padding: 18px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: transform 0.2s;">
-                    Consultar Disponibilidad
-                </a>
-            </div>
+    <div style="background: #16213e; border-radius: 24px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(0,229,255,0.15);">
+        
+        <div style="flex: 1; min-width: 320px; background: #070d1f; display: flex; align-items: center; justify-content: center; min-height: 400px;">
+            <img id="fotoProducto" src="blanco-vacia.png" style="width: 100%; height: 100%; object-fit: cover; transition: all 0.3s;">
         </div>
-    </section>
+
+        <div style="flex: 1; min-width: 320px; padding: 40px; box-sizing: border-box;">
+            <h2 style="color: #00e5ff; margin-top: 0; font-size: 2.2rem;">Maceta Prismática</h2>
+            
+            <div style="margin: 30px 0;">
+                <label style="display: block; margin-bottom: 12px; color: #00e5ff; font-size: 0.8rem;">COLOR DE LA PIEZA:</label>
+                <select id="selectorColor" onchange="window.forzarCambio()" style="width: 100%; padding: 15px; border-radius: 12px; background: #0a1128; color: white; border: 1px solid #00e5ff;">
+                    <option value="Blanco">Blanco</option>
+                    <option value="Negro Mate">Negro Mate</option>
+                </select>
+            </div>
+
+            <a id="btnWhatsapp" href="https://wa.me/5493816XXXXXX" target="_blank"
+               style="display: block; text-align: center; background: #00e5ff; color: #0a1128; padding: 18px; border-radius: 12px; text-decoration: none; font-weight: bold;">
+                Consultar Disponibilidad
+            </a>
+        </div>
+    </div>
+</section>
 
     <section style="padding: 60px 20px; max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
         <div style="background: rgba(22, 33, 62, 0.5); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(0,229,255,0.05);">
@@ -77,50 +73,37 @@
     </a>
 
    <script>
-    let relojNydra;
+    window.forzarCambio = function() {
+        var sel = document.getElementById('selectorColor');
+        var img = document.getElementById('fotoProducto');
+        var btn = document.getElementById('btnWhatsapp');
+        var color = sel.value;
+        
+        // Alerta para confirmar que el código responde (podés borrarla después)
+        console.log("Cambiando a " + color);
 
-    function ejecutarCambioMagico() {
-        const selector = document.getElementById('selectorColor');
-        const imagen = document.getElementById('fotoProducto');
-        const miTelefono = "5493816XXXXXX"; 
+        var v = "?v=" + new Date().getTime(); // Anti-caché
+        var foto1 = (color === "Blanco") ? "blanco-vacia.png" : "negro-vacia.png";
+        var foto2 = (color === "Blanco") ? "blanco-planta.jpeg" : "negro-planta.png";
 
-        if (!selector || !imagen) return;
+        // Cambio inmediato
+        img.src = foto1 + v;
 
-        // Feedback visual: El botón parpadea para avisarte que el código arrancó
-        document.getElementById('btnWhatsapp').style.background = "white";
-        setTimeout(() => { 
-            document.getElementById('btnWhatsapp').style.background = "#00e5ff"; 
-        }, 200);
-
-        const colorElegido = selector.value;
-        clearTimeout(relojNydra);
-
-        let foto1 = (colorElegido === "Blanco") ? "blanco-vacia.png" : "negro-vacia.png";
-        let foto2 = (colorElegido === "Blanco") ? "blanco-planta.jpeg" : "negro-planta.png";
-
-        // Forzamos al navegador a ignorar la memoria vieja
-        const version = "?v=" + new Date().getTime();
-
-        // PASO 1: Cambiar a VACÍA
-        imagen.src = foto1 + version;
-        console.log("Cambiando a: " + foto1);
-
-        // PASO 2: Cambiar a PLANTA a los 3 segundos
-        relojNydra = setTimeout(() => {
-            imagen.src = foto2 + version;
-            console.log("Cambiando a: " + foto2);
+        // Cambio a los 3 segundos
+        setTimeout(function() {
+            img.src = foto2 + v;
         }, 3000);
 
-        // Actualizar WhatsApp
-        const texto = encodeURIComponent("Hola Nydra Studios! Consulto por la maceta " + colorElegido);
-        document.getElementById('btnWhatsapp').href = "https://wa.me/" + miTelefono + "?text=" + texto;
-    }
+        // Update Link
+        btn.href = "https://wa.me/5493816XXXXXX?text=Hola Nydra Studios! Quiero la maceta color " + color;
+    };
 
-    // Iniciar apenas cargue
-    window.onload = ejecutarCambioMagico;
+    // Ejecutar al inicio
+    window.onload = window.forzarCambio;
 </script>
 </body>
 </html>
+
 
 
 

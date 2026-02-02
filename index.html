@@ -159,14 +159,14 @@
             <div style="margin: 25px 0;">
                 <h4 style="margin-bottom: 10px; text-transform: uppercase; font-size: 0.8rem; color: #00e5ff;">Elegí tu color:</h4>
                 <div style="display: flex; gap: 15px;">
-                    <div onclick="seleccionarColor('Blanco', this)" style="width: 35px; height: 35px; background: #ffffff; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: 0.3s; box-shadow: 0 0 5px rgba(255,255,255,0.2);" title="Blanco"></div>
-                    <div onclick="seleccionarColor('Negro Mate', this)" style="width: 35px; height: 35px; background: #212121; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: 0.3s;" title="Negro Mate"></div>
-                    <div onclick="seleccionarColor('Beige', this)" style="width: 35px; height: 35px; background: #d2b48c; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: 0.3s;" title="Beige"></div>
+                    <div onclick="seleccionarColor('Blanco', this)" style="width: 35px; height: 35px; background: #FFFFFF; border-radius: 50%; cursor: pointer; border: 2px solid #ddd; transition: 0.3s;" title="Blanco"></div>
+                    <div onclick="seleccionarColor('Negro Mate', this)" style="width: 35px; height: 35px; background: #1A1A1A; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.3s;" title="Negro Mate"></div>
+                    <div onclick="seleccionarColor('Beige', this)" style="width: 35px; height: 35px; background: #F5F5DC; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.3s;" title="Beige"></div>
                 </div>
                 <p id="colorElegidoTexto" style="margin-top: 10px; font-size: 0.9rem; color: #00e5ff; font-weight: bold;">Seleccionado: Ninguno</p>
             </div>
 
-            <a id="btnWhatsapp" href="+542616510974" 
+            <a id="btnWhatsapp" href="https://wa.me/5492616510974?text=Hola%20Nydra%20Studios!%20Me%20interesa%20la%20Maceta%20Prismática" 
                target="_blank"
                style="display: block; text-align: center; background: #00e5ff; color: #0a1128; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,229,255,0.3);">
                 Consultar Disponibilidad
@@ -175,6 +175,24 @@
     </div>
 </section>
 
+<script>
+    function seleccionarColor(color, elemento) {
+        const circulos = elemento.parentElement.children;
+        for (let c of circulos) { 
+            // Restauramos el borde original según el color
+            c.style.borderColor = (c.title === 'Blanco') ? '#ddd' : 'transparent'; 
+        }
+        
+        // El seleccionado siempre tendrá el borde celeste de Nydra
+        elemento.style.borderColor = '#00e5ff';
+        document.getElementById('colorElegidoTexto').innerText = 'Seleccionado: ' + color;
+        
+        const numeroTel = "5492616510974"; // <--- PONÉ TU NÚMERO AQUÍ
+        const mensaje = `Hola Nydra Studios! Quería consultar por la disponibilidad de la Maceta Prismática en color ${color}.`;
+        
+        document.getElementById('btnWhatsapp').href = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
+    }
+</script>
 <script>
     function seleccionarColor(color, elemento) {
         const circulos = elemento.parentElement.children;
@@ -255,6 +273,7 @@
 </body>
 
 </html>
+
 
 
 

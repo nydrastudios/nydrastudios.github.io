@@ -77,47 +77,43 @@
     </a>
 
     <script>
-        let timer;
+    let timer;
 
-        function cambiarVista() {
-            const selector = document.getElementById('selectorColor');
-            const img = document.getElementById('fotoProducto');
-            const btn = document.getElementById('btnWhatsapp');
-            const numeroTel = "5492616510974"; // <--- TU NÚMERO ACÁ
+    function cambiarVista() {
+        const sel = document.getElementById('selectorColor');
+        const img = document.getElementById('fotoProducto');
+        const btn = document.getElementById('btnWhatsapp');
+        const tel = "5493816XXXXXX"; 
 
-            if (!img) return;
+        const color = sel.value;
+        clearTimeout(timer);
 
-            const color = selector.value;
-            clearTimeout(timer);
+        let vacia = (color === "Blanco") ? "blanco-vacia.png" : "negro-vacia.png";
+        let planta = (color === "Blanco") ? "blanco-planta.jpeg" : "negro-planta.png";
 
-            // Definir rutas de archivos según tus extensiones exactas
-            let vacia = (color === "Blanco") ? "blanco-vacia.png" : "negro-vacia.png";
-            let planta = (color === "Blanco") ? "blanco-planta.jpeg" : "negro-planta.png";
+        // SI LA IMAGEN NO CARGA, ESTO TE AVISARÁ POR QUÉ
+        img.onerror = function() {
+            alert("⚠️ ERROR: No se encuentra el archivo: " + this.src.split('/').pop() + 
+                  "\nRevisá que el nombre sea exacto y esté en la misma carpeta.");
+        };
 
-            // PASO 1: Mostrar vacía con efecto de parpadeo
-            img.style.opacity = "0.2";
-            setTimeout(() => {
-                img.src = vacia;
-                img.style.opacity = "1";
-            }, 300);
+        // PASO 1: Cambiar a vacía
+        console.log("Intentando cargar: " + vacia);
+        img.src = vacia;
 
-            // PASO 2: Mostrar con planta a los 3 segundos
-            timer = setTimeout(() => {
-                img.style.opacity = "0.2";
-                setTimeout(() => {
-                    img.src = planta;
-                    img.style.opacity = "1";
-                }, 300);
-            }, 3000);
+        // PASO 2: Cambiar a planta a los 3 segundos
+        timer = setTimeout(() => {
+            console.log("Intentando cargar: " + planta);
+            img.src = planta;
+        }, 3000);
 
-            // Actualizar mensaje de WhatsApp
-            const mensaje = encodeURIComponent(`Hola Nydra Studios! Me gustaría hacerles una consulta por la Maceta Prismática en color ${color}.`);
-            btn.href = "https://wa.me/" + numeroTel + "?text=" + mensaje;
-        }
+        const mensaje = encodeURIComponent("Hola Nydra Studios! Consulto por la maceta " + color);
+        btn.href = "https://wa.me/" + tel + "?text=" + mensaje;
+    }
 
-        // Cargar estado inicial
-        window.onload = cambiarVista;
-    </script>
+    window.onload = cambiarVista;
+</script>
 
 </body>
 </html>
+

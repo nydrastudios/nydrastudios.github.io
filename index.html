@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nydra Studios | Impresión 3D Tucumán</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-neon: #00e5ff;
+            --azul-oscuro: #0a1128;
+            --azul-medio: #1c2a4a;
+            --blanco: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: var(--azul-oscuro);
+            color: var(--blanco);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 3rem 1rem;
+            text-align: center;
+            background: linear-gradient(180deg, #0a1128 0%, #1c2a4a 100%);
+        }
+
+        .logo-text {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--azul-neon);
+            letter-spacing: -2px;
+            margin: 0;
+            text-transform: lowercase;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-top: 0;
+        }
+
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--azul-medio);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight { color: var(--azul-neon); }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Sección de Diferenciales */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--azul-medio);
+            text-align: center;
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--azul-neon);
+            margin-bottom: 1rem;
+        }
+
+        /* Botón de WhatsApp */
+        .wpp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .cta-main {
+            background: var(--azul-neon);
+            color: var(--azul-oscuro);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .cta-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--azul-neon);
+        }
+
+        footer {
+            background: #050a18;
+            padding: 3rem 1rem;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .social-links a {
+            color: var(--azul-neon);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <p class="logo-text">nydra</p>
+        <p class="subtitle">3D STUDIOS</p>
+    </header>
+
+    <section class="hero">
+        <h2>Materializando tus ideas <br><span class="highlight">capa por capa.</span></h2>
+        <p>Desde San Miguel de Tucumán a todo el país.</p>
+        <br><br>
+        <a href="https://wa.me/5492616510974?text=Hola!%20Vi%20tu%20web%20y%20quiero%20cotizar%20una%20impresión" class="cta-main">Pedir Cotización</a>
+    </section>
+
+    <div class="container">
+        <div class="features">
+            <div class="feature-card">
+                <i class="fas fa-truck-fast"></i>
+                <h3>Envíos a todo el país</h3>
+                <p>Estamos en Tucumán, pero tus ideas llegan a cualquier rincón de Argentina.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-microchip"></i>
+                <h3>Calidad FDM</h3>
+                <p>Especialistas en PLA. Piezas resistentes, decorativas y funcionales con acabado premium.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-check-double"></i>
+                <h3>Atención Personalizada</h3>
+                <p>Te asesoramos en el material y relleno ideal para que tu pieza sea perfecta.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>NYDRA STUDIOS - 2026</p>
+        <div class="social-links">
+            <a href="https://instagram.com/nydra_studios"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5492616510974"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p style="margin-top: 20px;">Tucumán, Argentina</p>
+    </footer>
+
+    <a href="https://wa.me/5492616510974?text=Hola!%20Vi%20tu%20web%20y%20quiero%20cotizar%20una%20impresión" class="wpp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

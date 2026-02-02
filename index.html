@@ -23,17 +23,17 @@
     <section style="padding: 20px; max-width: 900px; margin: auto;">
         <div style="background: #16213e; border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 15px 35px rgba(0,0,0,0.6); border: 1px solid rgba(0,229,255,0.2);">
             
-            <div style="flex: 1; min-width: 300px;">
-                <img src="maceta.v2.jpeg" alt="Maceta Prismática" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            <div style="flex: 1; min-width: 300px; background: #0a1128; display: flex; align-items: center; justify-content: center;">
+                <img id="fotoProducto" src="blanco-planta.jpg" alt="Maceta Prismática" 
+                     style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease-in-out;">
             </div>
 
             <div style="flex: 1; min-width: 300px; padding: 30px; color: white;">
                 <h2 style="color: #00e5ff; margin-top: 0; font-size: 2rem;">Maceta Prismática</h2>
-                <p style="color: #b2bec3; line-height: 1.6;">Diseño geométrico de alta resistencia. Impreso en 3D con terminación premium.</p>
                 
                 <div style="margin: 25px 0;">
                     <label for="selectorColor" style="display: block; margin-bottom: 10px; text-transform: uppercase; font-size: 0.8rem; color: #00e5ff;">Elegí el color:</label>
-                    <select id="selectorColor" onchange="actualizarMensaje()" style="width: 100%; padding: 12px; border-radius: 8px; background: #0a1128; color: white; border: 1px solid #00e5ff; font-size: 1rem; cursor: pointer;">
+                    <select id="selectorColor" onchange="actualizarProducto()" style="width: 100%; padding: 12px; border-radius: 8px; background: #0a1128; color: white; border: 1px solid #00e5ff; font-size: 1rem; cursor: pointer;">
                         <option value="Blanco">Blanco</option>
                         <option value="Negro Mate">Negro Mate</option>
                         <option value="Beige">Beige</option>
@@ -41,7 +41,7 @@
                 </div>
 
                 <a id="btnWhatsapp" href="#" target="_blank"
-                   style="display: block; text-align: center; background: #00e5ff; color: #0a1128; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,229,255,0.3);">
+                   style="display: block; text-align: center; background: #00e5ff; color: #0a1128; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem;">
                     Consultar Disponibilidad
                 </a>
             </div>
@@ -100,18 +100,59 @@
         </p>
     </footer>
 
-    <script>
-        function actualizarMensaje() {
+   <script>
+        let temporizador; 
+
+        function actualizarProducto() {
             const color = document.getElementById('selectorColor').value;
-            const numeroTel = "5492616510974"; // <--- TU NÚMERO
-            const mensaje = `Hola Nydra Studios! Quería consultar por la disponibilidad de la Maceta Prismática en color ${color}.`;
-            document.getElementById('btnWhatsapp').href = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
+            const imgElement = document.getElementById('fotoProducto');
+            const btnWa = document.getElementById('btnWhatsapp');
+            const numeroTel = "5493816XXXXXX"; // <--- PONÉ TU NÚMERO AQUÍ
+
+            // 1. Cancelamos cualquier cambio de imagen que estuviera en curso
+            clearTimeout(temporizador);
+
+            // 2. Definimos qué fotos mostrar según el color elegido
+            let fotoVacia = "";
+            let fotoConPlanta = "";
+
+            if (color === "Blanco") {
+                fotoVacia = "maceta.blanco.png";
+                fotoConPlanta = "maceta.Pblanc.png";
+            } else if (color === "Negro Mate") {
+                fotoVacia = "maceta.negro.png";
+                fotoConPlanta = "maceta.Pnegro.png";
+            }
+
+            // 3. CAMBIO INMEDIATO: Ponemos la maceta VACÍA
+            imgElement.style.opacity = "0.3"; // Se desvanece un poco para el efecto
+            
+            setTimeout(() => {
+                imgElement.src = fotoVacia;
+                imgElement.style.opacity = "1";
+            }, 300);
+
+            // 4. CAMBIO AUTOMÁTICO: A los 3 segundos ponemos la maceta CON PLANTA
+            temporizador = setTimeout(() => {
+                imgElement.style.opacity = "0.3";
+                setTimeout(() => {
+                    imgElement.src = fotoConPlanta;
+                    imgElement.style.opacity = "1";
+                }, 300);
+            }, 3000); // 3000ms = 3 segundos
+
+            // 5. Actualizamos el mensaje de WhatsApp para que diga el color
+            const mensaje = `Hola Nydra Studios! me gustaría hacerles una consulta por la Maceta Prismática en color ${color}.`;
+            btnWa.href = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
         }
-        window.addEventListener('load', actualizarMensaje);
+
+        // Esto hace que la página cargue con la configuración inicial apenas abre
+        window.addEventListener('load', actualizarProducto);
     </script>
 
 </body>
 </html>
+
 
 
 

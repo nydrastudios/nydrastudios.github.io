@@ -99,41 +99,39 @@
             NYDRA STUDIOS <span style="color: #00e5ff; margin: 0 10px;">|</span> 2026
         </p>
     </footer>
-
-  <script>
+<script>
         let temporizador; 
 
         function actualizarProducto() {
             const color = document.getElementById('selectorColor').value;
             const imgElement = document.getElementById('fotoProducto');
             const btnWa = document.getElementById('btnWhatsapp');
-            const numeroTel = "5493816XXXXXX"; // <--- NO OLVIDES PONER TU NÚMERO
+            const numeroTel = "5493816XXXXXX"; // <--- CAMBIÁ POR TU NÚMERO
 
             if (!imgElement) return;
 
-            // Cancelamos cualquier cambio anterior
             clearTimeout(temporizador);
 
-            // Definimos las fotos con extensión .png
             let fotoVacia = "";
             let fotoConPlanta = "";
 
+            // CONFIGURACIÓN ESPECÍFICA DE TUS ARCHIVOS
             if (color === "Blanco") {
-                fotoVacia = "maceta.blanco.png";
-                fotoConPlanta = "maceta.Pblanc.png";
+                fotoVacia = "blanco-vacia.png";     // PNG
+                fotoConPlanta = "blanco-planta.jpeg"; // JPEG (el diferente)
             } else if (color === "Negro Mate") {
-                fotoVacia = "maceta.negro.png";
-                fotoConPlanta = "maceta.Pnegro.png";
+                fotoVacia = "negro-vacia.png";     // PNG
+                fotoConPlanta = "negro-planta.png";   // PNG
             }
 
-            // 1. Mostrar maceta VACÍA inmediatamente
+            // 1. Efecto y cambio a maceta VACÍA
             imgElement.style.opacity = "0.3"; 
             setTimeout(() => {
                 imgElement.src = fotoVacia;
                 imgElement.style.opacity = "1";
             }, 300);
 
-            // 2. A los 3 segundos, mostrar maceta CON PLANTA
+            // 2. A los 3 segundos, cambio a maceta CON PLANTA
             temporizador = setTimeout(() => {
                 imgElement.style.opacity = "0.3";
                 setTimeout(() => {
@@ -142,7 +140,7 @@
                 }, 300);
             }, 3000);
 
-            // 3. Actualizar link de WhatsApp
+            // 3. Link de WhatsApp
             const mensaje = `Hola Nydra Studios! me gustaría hacerles una consulta por la Maceta Prismática en color ${color}.`;
             btnWa.href = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
         }
@@ -151,6 +149,7 @@
     </script>
 </body>
 </html>
+
 
 
 

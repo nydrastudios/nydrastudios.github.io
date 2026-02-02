@@ -3,173 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nydra Studios | 3D Tech Store</title>
+    <title>Nydra Studios | Catálogo 3D</title>
     <style>
-        :root {
-            --neon: #00e5ff;
-            --bg: #0a1128;
-            --card: #16213e;
-        }
-        body {
-            background-color: var(--bg);
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .container {
-            width: 90%;
-            max-width: 450px;
-            margin-top: 50px;
-        }
-        .product-card {
-            background: var(--card);
-            border-radius: 25px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            position: relative;
-        }
-        .image-container {
-            width: 100%;
-            height: 400px;
-            background: #000;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-        /* FLECHAS */
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 229, 255, 0.7);
-            color: #0a1128;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px var(--neon);
-        }
-        .arrow-left { left: 15px; }
-        .arrow-right { right: 15px; }
-        .arrow:active { scale: 0.9; }
-
-        .info {
-            padding: 25px;
-            text-align: center;
-        }
-        .badge {
-            background: var(--neon);
-            color: var(--bg);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-        h2 { margin: 15px 0 10px; color: var(--neon); }
-        .btn-wa {
-            display: block;
-            background: var(--neon);
-            color: var(--bg);
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 15px;
-            font-weight: bold;
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
-        }
+        :root { --neon: #00e5ff; --bg: #0a1128; --card: #16213e; }
+        body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; padding-bottom: 50px; }
+        .logo-container { margin-top: 30px; margin-bottom: 20px; }
+        .product-card { background: var(--card); border-radius: 20px; overflow: hidden; width: 90%; max-width: 400px; margin-top: 30px; border: 1px solid rgba(0,229,255,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .image-container { position: relative; width: 100%; height: 350px; background: #000; display: flex; align-items: center; justify-content: center; }
+        .image-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+        .arrow { position: absolute; top: 50%; transform: translateY(-50%); background: var(--neon); color: #000; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; font-weight: bold; z-index: 5; }
+        .arrow-l { left: 10px; } .arrow-r { right: 10px; }
+        .info { padding: 25px; text-align: center; }
+        .btn-wa { display: block; background: var(--neon); color: #0a1128; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: bold; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        h2 { margin: 10px 0; color: var(--neon); font-size: 1.6rem; }
+        p { color: #b2bec3; font-size: 0.95rem; line-height: 1.4; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header style="text-align: center; margin-bottom: 30px;">
-            <h1 style="letter-spacing: 5px; font-weight: 300; border-bottom: 2px solid var(--neon); display: inline-block; padding-bottom: 10px;">NYDRA</h1>
-        </header>
+    <div class="logo-container">
+        <img src="logo.png" alt="Nydra Studios" style="width: 160px;">
+    </div>
 
-        <div class="product-card">
-            <div class="image-container">
-                <button class="arrow arrow-left" onclick="cambiar(0)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="cambiar(1)">&#10095;</button>
-                
-                <img id="visor" src="blanco-planta.jpeg" alt="Maceta Nydra">
-            </div>
+    <div class="product-card">
+        <div class="image-container">
+            <button class="arrow arrow-l" onclick="moverMaceta(-1)">&#10094;</button>
+            <button class="arrow arrow-r" onclick="moverMaceta(1)">&#10095;</button>
+            <img id="fotoMaceta" src="blanco-planta.jpeg">
+        </div>
+        <div class="info">
+            <h2 id="nombreMaceta">Maceta Blanca</h2>
+            <p>Diseño Prismático Premium impreso en 3D. Ideal para decorar tu setup o living.</p>
+            <a id="linkWaMaceta" href="https://wa.me/5492616510974?text=Hola! Me interesa la Maceta Blanca" class="btn-wa">Consultar WhatsApp</a>
+        </div>
+    </div>
 
-            <div class="info">
-                <span class="badge">Nydra Series</span>
-                <h2 id="titulo">Maceta Blanca</h2>
-                <p style="color: #b2bec3;">Diseño Prismático impreso en 3D de alta densidad.</p>
-                
-                <a id="linkWa" href="https://wa.me/+5492616510974?text=Hola! Me interesa la Maceta Blanca" class="btn-wa">
-                    CONSULTAR POR WHATSAPP
-                </a>
-            </div>
+    <div class="product-card">
+        <div class="image-container">
+            <img src="florero.png" alt="Florero Nydra">
+        </div>
+        <div class="info">
+            <h2>Florero Nórdico</h2>
+            <p>Minimalismo puro. Una pieza única fabricada con polímeros biodegradables.</p>
+            <a href="https://wa.me/5492616510974?text=Hola! Me interesa el Florero Nórdico" class="btn-wa">Consultar WhatsApp</a>
         </div>
     </div>
 
     <script>
-        // Lista de tus fotos y nombres
-        const productos = [
-            {
-                foto: "blanco-planta.jpeg",
-                nombre: "Maceta Blanca",
-                color: "Blanco"
-            },
-            {
-                foto: "negro-planta.png",
-                nombre: "Maceta Negra",
-                color: "Negro"
-            }
+        // Lógica simple para la maceta
+        const fotosMaceta = [
+            { img: "blanco-planta.jpeg", txt: "Maceta Blanca" },
+            { img: "negro-planta.png", txt: "Maceta Negra" }
         ];
+        let idx = 0;
 
-        let indiceActual = 0;
-
-        function cambiar(direccion) {
-            const visor = document.getElementById('visor');
-            const titulo = document.getElementById('titulo');
-            const linkWa = document.getElementById('linkWa');
-            const numero = "+5492616510974"; // <--- PONÉ TU NÚMERO ACÁ
-
-            // Efecto de parpadeo al cambiar
-            visor.style.opacity = "0";
-
+        function moverMaceta(dir) {
+            idx = (idx + dir + fotosMaceta.length) % fotosMaceta.length;
+            const img = document.getElementById('fotoMaceta');
+            const txt = document.getElementById('nombreMaceta');
+            const wa = document.getElementById('linkWaMaceta');
+            
+            img.style.opacity = "0"; // Efecto de fundido
             setTimeout(() => {
-                // Si direccion es 1 suma, si es 0 resta (o circula)
-                if(direccion === 1) {
-                    indiceActual = (indiceActual + 1) % productos.length;
-                } else {
-                    indiceActual = (indiceActual - 1 + productos.length) % productos.length;
-                }
-
-                const p = productos[indiceActual];
-                
-                // Aplicar cambios
-                visor.src = p.foto;
-                titulo.innerText = p.nombre;
-                linkWa.href = `https://wa.me/${numero}?text=Hola! Me interesa la ${p.nombre}`;
-                
-                visor.style.opacity = "1";
+                img.src = fotosMaceta[idx].img;
+                txt.innerText = fotosMaceta[idx].txt;
+                wa.href = "https://wa.me/5492616510974?text=Hola! Me interesa la " + fotosMaceta[idx].txt;
+                img.style.opacity = "1";
             }, 200);
         }
     </script>
-
 </body>
 </html>

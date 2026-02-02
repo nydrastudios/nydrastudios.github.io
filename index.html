@@ -144,40 +144,58 @@
              
     </div>
 </header>
-    <section style="padding: 20px; max-width: 800px; margin: auto; font-family: sans-serif; color: white;">
-    <div style="background: #16213e; border-radius: 15px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <section style="padding: 40px 20px; max-width: 900px; margin: auto; font-family: 'Segoe UI', sans-serif;">
+    <div style="background: #16213e; border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 15px 35px rgba(0,0,0,0.6); border: 1px solid rgba(0,229,255,0.2);">
         
-        <div style="flex: 1; min-width: 300px; background: #000;">
-            <img src="maceta.jpeg" alt="Producto 3D" style="width: 100%; height: 100%; object-fit: cover;">
+        <div style="flex: 1; min-width: 300px;">
+            <img src="maceta.jpg" alt="Maceta Prismática" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
 
-        <div style="flex: 1; min-width: 300px; padding: 25px;">
-            <h2 style="color: #00e5ff; margin-top: 0;">Maceta Prismatica</h2>
-            <p style="color: #ccc; line-height: 1.6;">Impresión de alta resolución con detalles increíbles. Ideal para decoración o regalo.</p>
+        <div style="flex: 1; min-width: 300px; padding: 30px; color: white;">
+            <h2 id="nombreProducto" style="color: #00e5ff; margin-top: 0; font-size: 2rem;">Maceta Prismática</h2>
+            <p style="color: #b2bec3; line-height: 1.6;">Diseño geométrico de alta resistencia. Ideal para suculentas.</p>
             
-            <hr style="border: 0.5px solid #2d3436; margin: 20px 0;">
-
-            <div style="margin-bottom: 20px;">
-                <h4 style="margin-bottom: 10px; color: #fff;">Material:</h4>
-                <span style="background: #0a1128; border: 1px solid #00e5ff; padding: 5px 12px; border-radius: 20px; font-size: 0.9rem; margin-right: 5px;">PLA (Eco)</span>
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <h4 style="margin-bottom: 10px; color: #fff;">Colores disponibles:</h4>
-                <div style="display: flex; gap: 10px;">
-                    <div title="Rojo" style="width: 25px; height: 25px; background: white; border-radius: 50%; border: 2px solid white; cursor: pointer;"></div>
-                    <div title="Marron" style="width: 25px; height: 25px; background: brown; border-radius: 50%; cursor: pointer;"></div>
-                    <div title="Negro" style="width: 25px; height: 25px; background: black; border-radius: 50%; cursor: pointer;"></div>
-                    <div title="Beige" style="width: 25px; height: 25px; background: beige; border-radius: 50%; cursor: pointer;"></div>
+            <div style="margin: 25px 0;">
+                <h4 style="margin-bottom: 10px; text-transform: uppercase; font-size: 0.8rem; color: #00e5ff;">Elegí un color:</h4>
+                <div style="display: flex; gap: 15px;">
+                    <div onclick="seleccionarColor('Blanco Seda', this)" style="width: 35px; height: 35px; background: #ffffff; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.3s;" title="Blanco Seda"></div>
+                    <div onclick="seleccionarColor('Mármol', this)" style="width: 35px; height: 35px; background: #e0e0e0; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.3s;" title="Mármol"></div>
+                    <div onclick="seleccionarColor('Negro Mate', this)" style="width: 35px; height: 35px; background: #2d3436; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.3s;" title="Negro Mate"></div>
                 </div>
+                <p id="colorElegidoTexto" style="margin-top: 10px; font-size: 0.9rem; color: #00e5ff; font-weight: bold;">Seleccionado: Ninguno</p>
             </div>
 
-            <a href="+54 2616510974" style="display: block; text-align: center; background: #00e5ff; color: #0a1128; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s;">
-                Consultar por este modelo
+            <a id="btnWhatsapp" href="+542616510974" 
+               target="_blank"
+               style="display: block; text-align: center; background: #00e5ff; color: #0a1128; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,229,255,0.3);">
+                Consultar Disponibilidad
             </a>
         </div>
     </div>
 </section>
+
+<script>
+    function seleccionarColor(color, elemento) {
+        // 1. Resetear bordes de todos los círculos
+        const circulos = elemento.parentElement.children;
+        for (let c of circulos) { c.style.borderColor = 'transparent'; }
+        
+        // 2. Marcar el círculo seleccionado
+        elemento.style.borderColor = '#00e5ff';
+        
+        // 3. Actualizar el texto visual
+        document.getElementById('colorElegidoTexto').innerText = 'Seleccionado: ' + color;
+        
+        // 4. Configurar el mensaje automático
+        const producto = "Maceta Prismática";
+        const numeroTel = "+542616510974"; // <--- CAMBIÁ ESTO POR TU NÚMERO
+        const mensaje = `Hola Nydra Studios! Quería consultar por la disponibilidad de la ${producto} en color ${color}.`;
+        
+        // 5. Actualizar el enlace del botón
+        const urlFinal = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
+        document.getElementById('btnWhatsapp').href = urlFinal;
+    }
+</script>
     <section class="hero">
         <h2>Materializando tus ideas <br><span class="highlight">capa por capa.</span></h2>
         <p>Desde San Miguel de Tucumán a todo el país.</p>
@@ -221,6 +239,7 @@
 </body>
 
 </html>
+
 
 
 

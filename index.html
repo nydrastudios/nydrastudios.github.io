@@ -100,55 +100,67 @@
         </p>
     </footer>
 <script>
-        let temporizador; 
+    let temporizador;
 
-        function actualizarProducto() {
-            const color = document.getElementById('selectorColor').value;
-            const imgElement = document.getElementById('fotoProducto');
-            const btnWa = document.getElementById('btnWhatsapp');
-            const numeroTel = "5493816XXXXXX"; // <--- CAMBIÁ POR TU NÚMERO
+    function actualizarProducto() {
+        const selector = document.getElementById('selectorColor');
+        const imgElement = document.getElementById('fotoProducto');
+        const btnWa = document.getElementById('btnWhatsapp');
+        const numeroTel = "5493816XXXXXX"; // <--- TU NÚMERO REAL AQUÍ
 
-            if (!imgElement) return;
+        if (!imgElement) return;
 
-            clearTimeout(temporizador);
+        const color = selector.value;
+        clearTimeout(temporizador);
 
-            let fotoVacia = "";
-            let fotoConPlanta = "";
+        let fotoVacia = "";
+        let fotoConPlanta = "";
 
-            // CONFIGURACIÓN ESPECÍFICA DE TUS ARCHIVOS
-            if (color === "Blanco") {
-                fotoVacia = "blanco-vacia.png";     // PNG
-                fotoConPlanta = "blanco-planta.jpeg"; // JPEG (el diferente)
-            } else if (color === "Negro Mate") {
-                fotoVacia = "negro-vacia.png";     // PNG
-                fotoConPlanta = "negro-planta.png";   // PNG
-            }
-
-            // 1. Efecto y cambio a maceta VACÍA
-            imgElement.style.opacity = "0.3"; 
-            setTimeout(() => {
-                imgElement.src = fotoVacia;
-                imgElement.style.opacity = "1";
-            }, 300);
-
-            // 2. A los 3 segundos, cambio a maceta CON PLANTA
-            temporizador = setTimeout(() => {
-                imgElement.style.opacity = "0.3";
-                setTimeout(() => {
-                    imgElement.src = fotoConPlanta;
-                    imgElement.style.opacity = "1";
-                }, 300);
-            }, 3000);
-
-            // 3. Link de WhatsApp
-            const mensaje = `Hola Nydra Studios! me gustaría hacerles una consulta por la Maceta Prismática en color ${color}.`;
-            btnWa.href = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
+        // Asignación exacta según lo que me dijiste
+        if (color === "Blanco") {
+            fotoVacia = "blanco-vacia.png";
+            fotoConPlanta = "blanco-planta.jpeg"; 
+        } else if (color === "Negro Mate") {
+            fotoVacia = "negro-vacia.png";
+            fotoConPlanta = "negro-planta.png";
         }
 
-        window.addEventListener('load', actualizarProducto);
-    </script>
+        // Detectar si la imagen falla y avisarte
+        imgElement.onerror = function() {
+            console.error("No se pudo cargar: " + this.src);
+            // Si quieres un aviso visual, quita las // de abajo:
+            // alert("Error: No encuentro el archivo " + this.src.split('/').pop());
+        };
+
+        // Paso 1: Cambiar a VACÍA inmediatamente
+        imgElement.style.opacity = "0.2";
+        setTimeout(() => {
+            imgElement.src = fotoVacia;
+            imgElement.style.opacity = "1";
+        }, 300);
+
+        // Paso 2: Cambiar a PLANTA a los 3 segundos
+        temporizador = setTimeout(() => {
+            imgElement.style.opacity = "0.2";
+            setTimeout(() => {
+                imgElement.src = fotoConPlanta;
+                imgElement.style.opacity = "1";
+            }, 300);
+        }, 3000);
+
+        // Actualizar WhatsApp
+        const mensaje = `Hola Nydra Studios! me gustaría hacerles una consulta por la Maceta Prismática en color ${color}.`;
+        btnWa.href = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
+    }
+
+    // Forzar la carga inicial
+    window.onload = function() {
+        actualizarProducto();
+    };
+</script>
 </body>
 </html>
+
 
 
 

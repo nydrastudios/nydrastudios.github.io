@@ -3,169 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nydra Studios - Impresión 3D</title>
+    <title>Nydra Studios - Innovación 3D</title>
 </head>
-<body style="background: #0a1128; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<body style="background: #0a1128; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #ffffff;">
 
-    <header style="display: flex; flex-direction: column; align-items: center; padding: 40px 20px; text-align: center;">
-        <div style="width: 95%; max-width: 600px; margin-bottom: 20px;">
-            <img src="logo.png" alt="Nydra Studios Logo" 
-                 style="width: 100%; height: auto; display: block; filter: drop-shadow(0 0 15px rgba(0,229,255,0.4));">
+    <header style="display: flex; flex-direction: column; align-items: center; padding: 50px 20px; text-align: center;">
+        <div style="width: 95%; max-width: 500px; margin-bottom: 20px;">
+            <img src="logo-removebg-preview.png" alt="Nydra Studios" style="width: 100%; height: auto; filter: drop-shadow(0 0 15px rgba(0,229,255,0.4));">
         </div>
-        <h1 style="color: #00e5ff; font-size: 1.5rem; margin: 0; letter-spacing: 3px; text-transform: uppercase; font-weight: 300;">
+        <h1 style="color: #00e5ff; font-size: 1.4rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin: 0;">
             Innovación en cada capa
         </h1>
-        <p style="color: #b2bec3; max-width: 500px; line-height: 1.6; margin-top: 10px; font-size: 1rem;">
-            Transformamos tus ideas en realidad con tecnología de impresión 3D de alta precisión y materiales sustentables.
-        </p>
     </header>
 
-    <section style="padding: 20px; max-width: 900px; margin: auto;">
-        <div style="background: #16213e; border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 15px 35px rgba(0,0,0,0.6); border: 1px solid rgba(0,229,255,0.2);">
+    <section style="padding: 20px; max-width: 1000px; margin: auto;">
+        <div style="background: #16213e; border-radius: 24px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(0,229,255,0.15);">
             
-            <div style="flex: 1; min-width: 300px; background: #0a1128; display: flex; align-items: center; justify-content: center;">
-                <img id="fotoProducto" src="blanco-planta.jpg" alt="Maceta Prismática" 
-                     style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease-in-out;">
+            <div style="flex: 1; min-width: 320px; background: #070d1f; display: flex; align-items: center; justify-content: center; min-height: 400px; position: relative;">
+                <img id="fotoProducto" src="blanco-vacia.png" alt="Maceta Nydra" 
+                     style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease;">
             </div>
 
-            <div style="flex: 1; min-width: 300px; padding: 30px; color: white;">
-                <h2 style="color: #00e5ff; margin-top: 0; font-size: 2rem;">Maceta Prismática</h2>
-                
-                <div style="margin: 25px 0;">
-                    <label for="selectorColor" style="display: block; margin-bottom: 10px; text-transform: uppercase; font-size: 0.8rem; color: #00e5ff;">Elegí el color:</label>
-                    <select id="selectorColor" onchange="actualizarProducto()" style="width: 100%; padding: 12px; border-radius: 8px; background: #0a1128; color: white; border: 1px solid #00e5ff; font-size: 1rem; cursor: pointer;">
+            <div style="flex: 1; min-width: 320px; padding: 40px; box-sizing: border-box;">
+                <h2 style="color: #00e5ff; margin-top: 0; font-size: 2.2rem; font-weight: 700;">Maceta Prismática</h2>
+                <p style="color: #b2bec3; line-height: 1.6; font-size: 1.1rem;">
+                    Diseño geométrico de vanguardia. Fabricada mediante impresión 3D con terminación mate premium y alta resistencia.
+                </p>
+
+                <div style="margin: 30px 0;">
+                    <label style="display: block; margin-bottom: 12px; text-transform: uppercase; font-size: 0.8rem; color: #00e5ff; letter-spacing: 1px;">Color de la pieza:</label>
+                    <select id="selectorColor" onchange="cambiarVista()" style="width: 100%; padding: 15px; border-radius: 12px; background: #0a1128; color: white; border: 1px solid #00e5ff; font-size: 1rem; cursor: pointer; outline: none;">
                         <option value="Blanco">Blanco</option>
                         <option value="Negro Mate">Negro Mate</option>
-                        <option value="Beige">Beige</option>
                     </select>
                 </div>
 
                 <a id="btnWhatsapp" href="#" target="_blank"
-                   style="display: block; text-align: center; background: #00e5ff; color: #0a1128; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem;">
+                   style="display: block; text-align: center; background: #00e5ff; color: #0a1128; padding: 18px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: transform 0.2s;">
                     Consultar Disponibilidad
                 </a>
             </div>
         </div>
     </section>
-<section style="padding: 60px 20px; max-width: 900px; margin: auto; text-align: center;">
-        
-        <h3 style="color: #00e5ff; font-size: 1.8rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px;">
-            Calidad Nydra Studios
-        </h3>
 
-        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-            
-            <div style="flex: 1; min-width: 250px; background: rgba(22, 33, 62, 0.7); padding: 30px; border-radius: 15px; border: 1px solid rgba(0, 229, 255, 0.1);">
-                <div style="font-size: 2.5rem; margin-bottom: 15px;">♻️</div>
-                <h4 style="color: #fff; margin: 0 0 10px 0;">Material Sustentable</h4>
-                <p style="color: #b2bec3; font-size: 0.95rem; line-height: 1.5; margin: 0;">
-                    Trabajamos exclusivamente con <strong>PLA Bio-Premium</strong>, un material biodegradable derivado de recursos renovables como el almidón de maíz.
-                </p>
-            </div>
-
-            <div style="flex: 1; min-width: 250px; background: rgba(22, 33, 62, 0.7); padding: 30px; border-radius: 15px; border: 1px solid rgba(0, 229, 255, 0.1);">
-                <div style="font-size: 2.5rem; margin-bottom: 15px;">⚙️</div>
-                <h4 style="color: #fff; margin: 0 0 10px 0;">Precisión 3D</h4>
-                <p style="color: #b2bec3; font-size: 0.95rem; line-height: 1.5; margin: 0;">
-                    Nuestro proceso de impresión capa por capa garantiza piezas únicas, resistentes y con una terminación estética superior.
-                </p>
-            </div>
-
-            <div style="flex: 1; min-width: 250px; background: rgba(22, 33, 62, 0.7); padding: 30px; border-radius: 15px; border: 1px solid rgba(0, 229, 255, 0.1);">
-                <div style="font-size: 2.5rem; margin-bottom: 15px;">🚀</div>
-                <h4 style="color: #fff; margin: 0 0 10px 0;">Nuestro Objetivo</h4>
-                <p style="color: #b2bec3; font-size: 0.95rem; line-height: 1.5; margin: 0;">
-                    En Nydra, buscamos fusionar el diseño moderno con la tecnología de vanguardia para crear objetos que inspiren.
-                </p>
-            </div>
-
+    <section style="padding: 60px 20px; max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div style="background: rgba(22, 33, 62, 0.5); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(0,229,255,0.05);">
+            <div style="font-size: 2rem; margin-bottom: 15px;">♻️</div>
+            <h4 style="color: #00e5ff; margin: 0 0 10px 0;">PLA Bio-Premium</h4>
+            <p style="color: #b2bec3; font-size: 0.95rem; margin: 0;">Material ecológico derivado del maíz. Biodegradable y seguro para el hogar.</p>
+        </div>
+        <div style="background: rgba(22, 33, 62, 0.5); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(0,229,255,0.05);">
+            <div style="font-size: 2rem; margin-bottom: 15px;">⚙️</div>
+            <h4 style="color: #00e5ff; margin: 0 0 10px 0;">Alta Precisión</h4>
+            <p style="color: #b2bec3; font-size: 0.95rem; margin: 0;">Cada pieza es fabricada capa por capa con tecnología FDM de última generación.</p>
         </div>
     </section>
-    <a href="https://wa.me/5493816XXXXXX?text=Hola%20Nydra%20Studios,%20me%20gustaría%20hacerles%20una%20consulta." target="_blank" 
-       style="position: fixed; bottom: 20px; right: 20px; background: #00e5ff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(0,229,255,0.4); z-index: 1000; text-decoration: none;">
-        <svg width="35" height="35" viewBox="0 0 24 24" fill="#0a1128" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </a>
 
-    <footer style="padding: 40px 20px; background: #0a1128; text-align: center; border-top: 1px solid rgba(0,229,255,0.1); margin-top: 50px;">
-        <div style="margin-bottom: 25px; display: flex; justify-content: center; gap: 40px;">
-            <a href="https://instagram.com/Nydra_Studios" target="_blank">
-                <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+    <footer style="padding: 40px 20px; text-align: center; border-top: 1px solid rgba(0,229,255,0.1);">
+        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
+            <a href="https://instagram.com/Nydra_Studios" target="_blank" style="text-decoration: none;">
+                <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
-            <a href="https://wa.me/5492616510974?text=Hola%20Nydra%20Studios,%20me%20gustaría%20hacerles%20una%20consulta." target="_blank">
-                <svg width="45" height="45" viewBox="0 0 24 24" fill="#00e5ff" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <a href="https://wa.me/5492616510974?text=Hola%20Nydra%20Studios,%20me%20gustaría%20hacerles%20una%20consulta." target="_blank" style="text-decoration: none;">
+                <svg width="35" height="35" viewBox="0 0 24 24" fill="#00e5ff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </a>
         </div>
-        <p style="color: #4b7bec; font-size: 0.9rem; letter-spacing: 2px; font-weight: 300; margin: 0;">
-            NYDRA STUDIOS <span style="color: #00e5ff; margin: 0 10px;">|</span> 2026
-        </p>
+        <p style="color: #4b7bec; font-size: 0.8rem; letter-spacing: 2px;">NYDRA STUDIOS | 2026</p>
     </footer>
-<script>
-    let temporizador;
 
-    function actualizarProducto() {
-        const selector = document.getElementById('selectorColor');
-        const imgElement = document.getElementById('fotoProducto');
-        const btnWa = document.getElementById('btnWhatsapp');
-        const numeroTel = "5493816XXXXXX"; // <--- TU NÚMERO REAL AQUÍ
+    <a href="https://wa.me/5492616510974?text=Hola%20Nydra%20Studios,%20me%20gustaría%20hacerles%20una%20consulta." target="_blank" 
+       style="position: fixed; bottom: 25px; right: 25px; background: #00e5ff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 8px 25px rgba(0,229,255,0.4); z-index: 1000;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="#0a1128"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
 
-        if (!imgElement) return;
+    <script>
+        let timer;
 
-        const color = selector.value;
-        clearTimeout(temporizador);
+        function cambiarVista() {
+            const selector = document.getElementById('selectorColor');
+            const img = document.getElementById('fotoProducto');
+            const btn = document.getElementById('btnWhatsapp');
+            const numeroTel = "5492616510974"; // <--- TU NÚMERO ACÁ
 
-        let fotoVacia = "";
-        let fotoConPlanta = "";
+            if (!img) return;
 
-        // Asignación exacta según lo que me dijiste
-        if (color === "Blanco") {
-            fotoVacia = "blanco-vacia.png";
-            fotoConPlanta = "blanco-planta.jpeg"; 
-        } else if (color === "Negro Mate") {
-            fotoVacia = "negro-vacia.png";
-            fotoConPlanta = "negro-planta.png";
+            const color = selector.value;
+            clearTimeout(timer);
+
+            // Definir rutas de archivos según tus extensiones exactas
+            let vacia = (color === "Blanco") ? "blanco-vacia.png" : "negro-vacia.png";
+            let planta = (color === "Blanco") ? "blanco-planta.jpeg" : "negro-planta.png";
+
+            // PASO 1: Mostrar vacía con efecto de parpadeo
+            img.style.opacity = "0.2";
+            setTimeout(() => {
+                img.src = vacia;
+                img.style.opacity = "1";
+            }, 300);
+
+            // PASO 2: Mostrar con planta a los 3 segundos
+            timer = setTimeout(() => {
+                img.style.opacity = "0.2";
+                setTimeout(() => {
+                    img.src = planta;
+                    img.style.opacity = "1";
+                }, 300);
+            }, 3000);
+
+            // Actualizar mensaje de WhatsApp
+            const mensaje = encodeURIComponent(`Hola Nydra Studios! Me gustaría hacerles una consulta por la Maceta Prismática en color ${color}.`);
+            btn.href = "https://wa.me/" + numeroTel + "?text=" + mensaje;
         }
 
-        // Detectar si la imagen falla y avisarte
-        imgElement.onerror = function() {
-            console.error("No se pudo cargar: " + this.src);
-            // Si quieres un aviso visual, quita las // de abajo:
-            // alert("Error: No encuentro el archivo " + this.src.split('/').pop());
-        };
+        // Cargar estado inicial
+        window.onload = cambiarVista;
+    </script>
 
-        // Paso 1: Cambiar a VACÍA inmediatamente
-        imgElement.style.opacity = "0.2";
-        setTimeout(() => {
-            imgElement.src = fotoVacia;
-            imgElement.style.opacity = "1";
-        }, 300);
-
-        // Paso 2: Cambiar a PLANTA a los 3 segundos
-        temporizador = setTimeout(() => {
-            imgElement.style.opacity = "0.2";
-            setTimeout(() => {
-                imgElement.src = fotoConPlanta;
-                imgElement.style.opacity = "1";
-            }, 300);
-        }, 3000);
-
-        // Actualizar WhatsApp
-        const mensaje = `Hola Nydra Studios! me gustaría hacerles una consulta por la Maceta Prismática en color ${color}.`;
-        btnWa.href = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
-    }
-
-    // Forzar la carga inicial
-    window.onload = function() {
-        actualizarProducto();
-    };
-</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

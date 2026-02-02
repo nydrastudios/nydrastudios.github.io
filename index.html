@@ -3,107 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nydra Studios - Innovación 3D</title>
+    <title>Nydra Studios | 3D Tech Store</title>
+    <style>
+        :root {
+            --neon: #00e5ff;
+            --bg: #0a1128;
+            --card: #16213e;
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 450px;
+            margin-top: 50px;
+        }
+        .product-card {
+            background: var(--card);
+            border-radius: 25px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .image-container {
+            width: 100%;
+            height: 400px;
+            background: #000;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        /* FLECHAS */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 229, 255, 0.7);
+            color: #0a1128;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px var(--neon);
+        }
+        .arrow-left { left: 15px; }
+        .arrow-right { right: 15px; }
+        .arrow:active { scale: 0.9; }
+
+        .info {
+            padding: 25px;
+            text-align: center;
+        }
+        .badge {
+            background: var(--neon);
+            color: var(--bg);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        h2 { margin: 15px 0 10px; color: var(--neon); }
+        .btn-wa {
+            display: block;
+            background: var(--neon);
+            color: var(--bg);
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
+        }
+    </style>
 </head>
-<body style="background: #0a1128; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #ffffff;">
+<body>
 
-    <header style="display: flex; flex-direction: column; align-items: center; padding: 50px 20px; text-align: center;">
-        <div style="width: 95%; max-width: 500px; margin-bottom: 20px;">
-            <img src="logo-removebg-preview.png" alt="Nydra Studios" style="width: 100%; height: auto; filter: drop-shadow(0 0 15px rgba(0,229,255,0.4));">
-        </div>
-        <h1 style="color: #00e5ff; font-size: 1.4rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin: 0;">
-            Innovación en cada capa
-        </h1>
-    </header>
+    <div class="container">
+        <header style="text-align: center; margin-bottom: 30px;">
+            <h1 style="letter-spacing: 5px; font-weight: 300; border-bottom: 2px solid var(--neon); display: inline-block; padding-bottom: 10px;">NYDRA</h1>
+        </header>
 
-    <section style="padding: 20px; max-width: 1000px; margin: auto;">
-    <div style="background: #16213e; border-radius: 24px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(0,229,255,0.15);">
-        
-        <div style="flex: 1; min-width: 320px; background: #070d1f; display: flex; align-items: center; justify-content: center; min-height: 400px;">
-            <img id="fotoProducto" src="blanco-vacia.png" style="width: 100%; height: 100%; object-fit: cover; transition: all 0.3s;">
-        </div>
-
-        <div style="flex: 1; min-width: 320px; padding: 40px; box-sizing: border-box;">
-            <h2 style="color: #00e5ff; margin-top: 0; font-size: 2.2rem;">Maceta Prismática</h2>
-            
-            <div style="margin: 30px 0;">
-                <label style="display: block; margin-bottom: 12px; color: #00e5ff; font-size: 0.8rem;">COLOR DE LA PIEZA:</label>
-                <select id="selectorColor" onchange="window.forzarCambio()" style="width: 100%; padding: 15px; border-radius: 12px; background: #0a1128; color: white; border: 1px solid #00e5ff;">
-                    <option value="Blanco">Blanco</option>
-                    <option value="Negro Mate">Negro Mate</option>
-                </select>
+        <div class="product-card">
+            <div class="image-container">
+                <button class="arrow arrow-left" onclick="cambiar(0)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="cambiar(1)">&#10095;</button>
+                
+                <img id="visor" src="blanco-planta.jpeg" alt="Maceta Nydra">
             </div>
 
-            <a id="btnWhatsapp" href="https://wa.me/5493816XXXXXX" target="_blank"
-               style="display: block; text-align: center; background: #00e5ff; color: #0a1128; padding: 18px; border-radius: 12px; text-decoration: none; font-weight: bold;">
-                Consultar Disponibilidad
-            </a>
+            <div class="info">
+                <span class="badge">Nydra Series</span>
+                <h2 id="titulo">Maceta Blanca</h2>
+                <p style="color: #b2bec3;">Diseño Prismático impreso en 3D de alta densidad.</p>
+                
+                <a id="linkWa" href="https://wa.me/+5492616510974?text=Hola! Me interesa la Maceta Blanca" class="btn-wa">
+                    CONSULTAR POR WHATSAPP
+                </a>
+            </div>
         </div>
     </div>
-</section>
 
-    <section style="padding: 60px 20px; max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div style="background: rgba(22, 33, 62, 0.5); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(0,229,255,0.05);">
-            <div style="font-size: 2rem; margin-bottom: 15px;">♻️</div>
-            <h4 style="color: #00e5ff; margin: 0 0 10px 0;">PLA Bio-Premium</h4>
-            <p style="color: #b2bec3; font-size: 0.95rem; margin: 0;">Material ecológico derivado del maíz. Biodegradable y seguro para el hogar.</p>
-        </div>
-        <div style="background: rgba(22, 33, 62, 0.5); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(0,229,255,0.05);">
-            <div style="font-size: 2rem; margin-bottom: 15px;">⚙️</div>
-            <h4 style="color: #00e5ff; margin: 0 0 10px 0;">Alta Precisión</h4>
-            <p style="color: #b2bec3; font-size: 0.95rem; margin: 0;">Cada pieza es fabricada capa por capa con tecnología FDM de última generación.</p>
-        </div>
-    </section>
+    <script>
+        // Lista de tus fotos y nombres
+        const productos = [
+            {
+                foto: "blanco-planta.jpeg",
+                nombre: "Maceta Blanca",
+                color: "Blanco"
+            },
+            {
+                foto: "negro-planta.png",
+                nombre: "Maceta Negra",
+                color: "Negro"
+            }
+        ];
 
-    <footer style="padding: 40px 20px; text-align: center; border-top: 1px solid rgba(0,229,255,0.1);">
-        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
-            <a href="https://instagram.com/Nydra_Studios" target="_blank" style="text-decoration: none;">
-                <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-            <a href="https://wa.me/5492616510974?text=Hola%20Nydra%20Studios,%20me%20gustaría%20hacerles%20una%20consulta." target="_blank" style="text-decoration: none;">
-                <svg width="35" height="35" viewBox="0 0 24 24" fill="#00e5ff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </a>
-        </div>
-        <p style="color: #4b7bec; font-size: 0.8rem; letter-spacing: 2px;">NYDRA STUDIOS | 2026</p>
-    </footer>
+        let indiceActual = 0;
 
-    <a href="https://wa.me/5492616510974?text=Hola%20Nydra%20Studios,%20me%20gustaría%20hacerles%20una%20consulta." target="_blank" 
-       style="position: fixed; bottom: 25px; right: 25px; background: #00e5ff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 8px 25px rgba(0,229,255,0.4); z-index: 1000;">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="#0a1128"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </a>
+        function cambiar(direccion) {
+            const visor = document.getElementById('visor');
+            const titulo = document.getElementById('titulo');
+            const linkWa = document.getElementById('linkWa');
+            const numero = "+5492616510974"; // <--- PONÉ TU NÚMERO ACÁ
 
-   <script>
-    window.forzarCambio = function() {
-        var sel = document.getElementById('selectorColor');
-        var img = document.getElementById('fotoProducto');
-        var btn = document.getElementById('btnWhatsapp');
-        var color = sel.value;
-        
-        // Alerta para confirmar que el código responde (podés borrarla después)
-        console.log("Cambiando a " + color);
+            // Efecto de parpadeo al cambiar
+            visor.style.opacity = "0";
 
-        var v = "?v=" + new Date().getTime(); // Anti-caché
-        var foto1 = (color === "Blanco") ? "blanco-vacia.png" : "negro-vacia.png";
-        var foto2 = (color === "Blanco") ? "blanco-planta.jpeg" : "negro-planta.png";
+            setTimeout(() => {
+                // Si direccion es 1 suma, si es 0 resta (o circula)
+                if(direccion === 1) {
+                    indiceActual = (indiceActual + 1) % productos.length;
+                } else {
+                    indiceActual = (indiceActual - 1 + productos.length) % productos.length;
+                }
 
-        // Cambio inmediato
-        img.src = foto1 + v;
+                const p = productos[indiceActual];
+                
+                // Aplicar cambios
+                visor.src = p.foto;
+                titulo.innerText = p.nombre;
+                linkWa.href = `https://wa.me/${numero}?text=Hola! Me interesa la ${p.nombre}`;
+                
+                visor.style.opacity = "1";
+            }, 200);
+        }
+    </script>
 
-        // Cambio a los 3 segundos
-        setTimeout(function() {
-            img.src = foto2 + v;
-        }, 3000);
-
-        // Update Link
-        btn.href = "https://wa.me/5493816XXXXXX?text=Hola Nydra Studios! Quiero la maceta color " + color;
-    };
-
-    // Ejecutar al inicio
-    window.onload = window.forzarCambio;
-</script>
 </body>
 </html>
-
-
-
-

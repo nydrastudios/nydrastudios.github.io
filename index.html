@@ -100,19 +100,21 @@
         </p>
     </footer>
 
-   <script>
+  <script>
         let temporizador; 
 
         function actualizarProducto() {
             const color = document.getElementById('selectorColor').value;
             const imgElement = document.getElementById('fotoProducto');
             const btnWa = document.getElementById('btnWhatsapp');
-            const numeroTel = "5493816XXXXXX"; // <--- PONÉ TU NÚMERO AQUÍ
+            const numeroTel = "5493816XXXXXX"; // <--- NO OLVIDES PONER TU NÚMERO
 
-            // 1. Cancelamos cualquier cambio de imagen que estuviera en curso
+            if (!imgElement) return;
+
+            // Cancelamos cualquier cambio anterior
             clearTimeout(temporizador);
 
-            // 2. Definimos qué fotos mostrar según el color elegido
+            // Definimos las fotos con extensión .png
             let fotoVacia = "";
             let fotoConPlanta = "";
 
@@ -124,34 +126,32 @@
                 fotoConPlanta = "maceta.Pnegro.png";
             }
 
-            // 3. CAMBIO INMEDIATO: Ponemos la maceta VACÍA
-            imgElement.style.opacity = "0.3"; // Se desvanece un poco para el efecto
-            
+            // 1. Mostrar maceta VACÍA inmediatamente
+            imgElement.style.opacity = "0.3"; 
             setTimeout(() => {
                 imgElement.src = fotoVacia;
                 imgElement.style.opacity = "1";
             }, 300);
 
-            // 4. CAMBIO AUTOMÁTICO: A los 3 segundos ponemos la maceta CON PLANTA
+            // 2. A los 3 segundos, mostrar maceta CON PLANTA
             temporizador = setTimeout(() => {
                 imgElement.style.opacity = "0.3";
                 setTimeout(() => {
                     imgElement.src = fotoConPlanta;
                     imgElement.style.opacity = "1";
                 }, 300);
-            }, 3000); // 3000ms = 3 segundos
+            }, 3000);
 
-            // 5. Actualizamos el mensaje de WhatsApp para que diga el color
+            // 3. Actualizar link de WhatsApp
             const mensaje = `Hola Nydra Studios! me gustaría hacerles una consulta por la Maceta Prismática en color ${color}.`;
             btnWa.href = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
         }
 
-        // Esto hace que la página cargue con la configuración inicial apenas abre
         window.addEventListener('load', actualizarProducto);
     </script>
-
 </body>
 </html>
+
 
 
 

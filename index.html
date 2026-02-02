@@ -6,17 +6,17 @@
     <title>Nydra Studios | Catálogo 3D</title>
     <style>
         :root { --neon: #00e5ff; --bg: #0a1128; --card: #16213e; }
-        body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; padding-bottom: 50px; }
-        .logo-container { margin-top: 30px; margin-bottom: 20px; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; padding-bottom: 50px; }
+        .logo-container { margin-top: 30px; margin-bottom: 20px; text-align: center; }
         .product-card { background: var(--card); border-radius: 20px; overflow: hidden; width: 90%; max-width: 400px; margin-top: 30px; border: 1px solid rgba(0,229,255,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .image-container { position: relative; width: 100%; height: 350px; background: #000; display: flex; align-items: center; justify-content: center; }
-        .image-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
-        .arrow { position: absolute; top: 50%; transform: translateY(-50%); background: var(--neon); color: #000; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; font-weight: bold; z-index: 5; }
-        .arrow-l { left: 10px; } .arrow-r { right: 10px; }
+        .image-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; opacity: 1; }
+        .arrow { position: absolute; top: 50%; transform: translateY(-50%); background: var(--neon); color: #000; border: none; width: 45px; height: 45px; border-radius: 50%; font-size: 24px; cursor: pointer; font-weight: bold; z-index: 10; box-shadow: 0 0 10px var(--neon); }
+        .arrow-l { left: 15px; } .arrow-r { right: 15px; }
         .info { padding: 25px; text-align: center; }
-        .btn-wa { display: block; background: var(--neon); color: #0a1128; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: bold; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-wa { display: block; background: var(--neon); color: #0a1128; text-decoration: none; padding: 16px; border-radius: 12px; font-weight: bold; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
         h2 { margin: 10px 0; color: var(--neon); font-size: 1.6rem; }
-        p { color: #b2bec3; font-size: 0.95rem; line-height: 1.4; }
+        p { color: #b2bec3; font-size: 0.95rem; line-height: 1.5; margin: 0; }
     </style>
 </head>
 <body>
@@ -33,44 +33,48 @@
         </div>
         <div class="info">
             <h2 id="nombreMaceta">Maceta Blanca</h2>
-            <p>Diseño Prismático Premium impreso en 3D. Ideal para decorar tu setup o living.</p>
+            <p>Diseño Prismático Nydra. Impreso en 3D con terminación premium.</p>
             <a id="linkWaMaceta" href="https://wa.me/5492616510974?text=Hola! Me interesa la Maceta Blanca" class="btn-wa">Consultar WhatsApp</a>
         </div>
     </div>
 
     <div class="product-card">
         <div class="image-container">
-            <img src="florero.png" alt="Florero Nydra">
+            <img src="florero.png" alt="Florero Nydra" onerror="this.src='https://via.placeholder.com/400x350?text=Subir+foto+florero.png'">
         </div>
         <div class="info">
             <h2>Florero Nórdico</h2>
-            <p>Minimalismo puro. Una pieza única fabricada con polímeros biodegradables.</p>
+            <p>Elegancia minimalista para tus espacios. Fabricado en material ecológico.</p>
             <a href="https://wa.me/5492616510974?text=Hola! Me interesa el Florero Nórdico" class="btn-wa">Consultar WhatsApp</a>
         </div>
     </div>
 
     <script>
-        // Lógica simple para la maceta
+        // Datos para la Maceta
         const fotosMaceta = [
-            { img: "blanco-planta.jpeg", txt: "Maceta Blanca" },
-            { img: "negro-planta.png", txt: "Maceta Negra" }
+            { archivo: "blanco-planta.jpeg", nombre: "Maceta Blanca" },
+            { archivo: "negro-planta.png", nombre: "Maceta Negra" }
         ];
-        let idx = 0;
+        let indice = 0;
 
-        function moverMaceta(dir) {
-            idx = (idx + dir + fotosMaceta.length) % fotosMaceta.length;
-            const img = document.getElementById('fotoMaceta');
-            const txt = document.getElementById('nombreMaceta');
-            const wa = document.getElementById('linkWaMaceta');
+        function moverMaceta(direccion) {
+            indice = (indice + direccion + fotosMaceta.length) % fotosMaceta.length;
+            const imagen = document.getElementById('fotoMaceta');
+            const texto = document.getElementById('nombreMaceta');
+            const boton = document.getElementById('linkWaMaceta');
+            const miTel = "5492616510974"; 
+
+            // Efecto visual de cambio
+            imagen.style.opacity = "0";
             
-            img.style.opacity = "0"; // Efecto de fundido
             setTimeout(() => {
-                img.src = fotosMaceta[idx].img;
-                txt.innerText = fotosMaceta[idx].txt;
-                wa.href = "https://wa.me/5492616510974?text=Hola! Me interesa la " + fotosMaceta[idx].txt;
-                img.style.opacity = "1";
-            }, 200);
+                imagen.src = fotosMaceta[indice].archivo;
+                texto.innerText = fotosMaceta[indice].nombre;
+                boton.href = "https://wa.me/" + miTel + "?text=Hola! Me interesa la " + fotosMaceta[indice].nombre;
+                imagen.style.opacity = "1";
+            }, 250);
         }
     </script>
+
 </body>
 </html>

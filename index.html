@@ -147,27 +147,29 @@
     <section style="padding: 40px 20px; max-width: 900px; margin: auto; font-family: 'Segoe UI', sans-serif;">
     <div style="background: #16213e; border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 15px 35px rgba(0,0,0,0.6); border: 1px solid rgba(0,229,255,0.2);">
         
-        <div style="flex: 1; min-width: 300px; position: relative;">
+        <div style="flex: 1; min-width: 300px;">
             <img src="maceta.jpeg" alt="Maceta Prismática" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-            <div style="position: absolute; top: 15px; left: 15px; background: #00e5ff; color: #0a1128; padding: 5px 15px; border-radius: 50px; font-weight: bold; font-size: 0.8rem;">3D PRINT</div>
         </div>
 
         <div style="flex: 1; min-width: 300px; padding: 30px; color: white;">
             <h2 style="color: #00e5ff; margin-top: 0; font-size: 2rem;">Maceta Prismática</h2>
-            <p style="color: #b2bec3; line-height: 1.6;">Diseño geométrico de alta resistencia. Ideal para suculentas o decoración moderna.</p>
+            <p style="color: #b2bec3; line-height: 1.6;">Diseño geométrico de alta resistencia. Impreso en 3D con terminación premium.</p>
             
-            <div style="margin: 25px 0;">
-                <h4 style="margin-bottom: 10px; text-transform: uppercase; font-size: 0.8rem; color: #00e5ff;">Elegí tu color:</h4>
-                <div style="display: flex; gap: 15px;">
-                    <div onclick="seleccionarColor('Blanco', this)" style="width: 35px; height: 35px; background: #FFFFFF; border-radius: 50%; cursor: pointer; border: 2px solid #ddd; transition: 0.3s;" title="Blanco"></div>
-                    <div onclick="seleccionarColor('Negro Mate', this)" style="width: 35px; height: 35px; background: #1A1A1A; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.3s;" title="Negro Mate"></div>
-                    <div onclick="seleccionarColor('Beige', this)" style="width: 35px; height: 35px; background: #F5F5DC; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.3s;" title="Beige"></div>
-                </div>
-                <p id="colorElegidoTexto" style="margin-top: 10px; font-size: 0.9rem; color: #00e5ff; font-weight: bold;">Seleccionado: Ninguno</p>
+            <div style="margin-top: 20px;">
+                <h4 style="margin-bottom: 5px; text-transform: uppercase; font-size: 0.8rem; color: #00e5ff;">Material:</h4>
+                <p style="margin: 0; color: #fff; font-weight: bold;">PLA Bio-Premium (Ecológico)</p>
             </div>
 
-            <a id="btnWhatsapp" href="https://wa.me/5492616510974?text=Hola%20Nydra%20Studios!%20Me%20interesa%20la%20Maceta%20Prismática" 
-               target="_blank"
+            <div style="margin: 25px 0;">
+                <label for="selectorColor" style="display: block; margin-bottom: 10px; text-transform: uppercase; font-size: 0.8rem; color: #00e5ff;">Elegí el color:</label>
+                <select id="selectorColor" onchange="actualizarMensaje()" style="width: 100%; padding: 12px; border-radius: 8px; background: #0a1128; color: white; border: 1px solid #00e5ff; font-size: 1rem; outline: none; cursor: pointer;">
+                    <option value="Blanco">Blanco</option>
+                    <option value="Negro Mate">Negro Mate</option>
+                    <option value="Beige">Beige</option>
+                </select>
+            </div>
+
+            <a id="btnWhatsapp" href="#" target="_blank"
                style="display: block; text-align: center; background: #00e5ff; color: #0a1128; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,229,255,0.3);">
                 Consultar Disponibilidad
             </a>
@@ -175,6 +177,21 @@
     </div>
 </section>
 
+<script>
+    function actualizarMensaje() {
+        const color = document.getElementById('selectorColor').value;
+        const producto = "Maceta Prismática";
+        const material = "PLA";
+        const numeroTel = "5492616510974"; // <--- PONÉ TU NÚMERO ACÁ
+        
+        const mensaje = `Hola Nydra Studios! Quería consultar por la disponibilidad de la ${producto} hecha en ${material}, en color ${color}.`;
+        
+        document.getElementById('btnWhatsapp').href = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
+    }
+
+    // Ejecutar una vez al cargar para que el botón ya tenga el primer color (Blanco)
+    window.onload = actualizarMensaje;
+</script>
 <script>
     function seleccionarColor(color, elemento) {
         const circulos = elemento.parentElement.children;
@@ -273,6 +290,7 @@
 </body>
 
 </html>
+
 
 
 
